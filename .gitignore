@@ -1,0 +1,51 @@
+# Markdown docs (not pushed)
+*.md
+
+# Dependencies
+node_modules/
+vendor/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Build output
+dist/
+cms/public/build/
+cms/public/hot/
+cms/public/storage/
+cms/bootstrap/cache/*.php
+
+# Laravel runtime/cache
+cms/storage/*.key
+cms/storage/app/*
+!cms/storage/app/.gitignore
+cms/storage/framework/cache/*
+cms/storage/framework/sessions/*
+cms/storage/framework/views/*
+cms/storage/framework/testing/*
+!cms/storage/framework/**/.gitignore
+cms/storage/logs/*
+!cms/storage/logs/.gitignore
+cms/database/database.sqlite
+cms/.phpunit.result.cache
+cms/auth.json
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.fleet/
+.nova/
+.zed/
+.phpactor.json
+
+# Tool-specific / backups / deploy artifacts
+portfolio/.claude/
+portfolio/data.js.backup-before-lorem
+portfolio/deploy-rumahweb/*.zip
+portfolio/deploy-rumahweb/*.sql
+portfolio/deploy-rumahweb/update-fix-final/

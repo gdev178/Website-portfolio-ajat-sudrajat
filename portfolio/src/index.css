@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* =========================================================
+   Token warna.
+   Semua komponen memakai var() ini — jangan tulis warna
+   mentah lagi, supaya mode terang ikut berubah otomatis.
+   ========================================================= */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0a0e13;
+  --surface: #0b1117;
+  --surface-2: #0d141c;
+  --surface-3: #080d12;
+  --field: #070b0f;
+
+  --text: #ffffff;
+  --text-strong: #d5dde5;
+  --text-2: #a8b6c4;
+  --text-3: #8a99a8;
+  --muted: #7c8a99;
+
+  --accent: #38bdf8;
+  --accent-ink: #04121c;
+
+  /* Tombol utama: kebalikan dari latar */
+  --contrast: #ffffff;
+  --contrast-ink: #0a0e13;
+
+  /* Garis tepi, dari halus ke tegas */
+  --line-1: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.14);
+  --line-3: rgba(255, 255, 255, 0.3);
+
+  /* Isian tipis di atas latar */
+  --tint-1: rgba(255, 255, 255, 0.025);
+  --tint-2: rgba(255, 255, 255, 0.05);
+  --tint-3: rgba(255, 255, 255, 0.08);
+
+  /* Warna status */
+  --ok: #34d399;
+  --warn: #fbbf24;
+
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --shadow: rgba(0, 0, 0, 0.5);
+  --glow-accent: rgba(56, 189, 248, 0.16);
+  --glow-deep: rgba(20, 80, 110, 0.22);
+
+  /* Latar placeholder gambar */
+  --ph-from: #16202b;
+  --ph-to: #0c1219;
+}
+
+/*
+ * Mode Spiderman — merah & hitam, menggantikan mode terang lama.
+ * --bg dan glow merahnya diambil langsung dari nilai yang disetujui di
+ * Hero (rgb(13,7,10) / rgba(72,13,24,...)) supaya seluruh situs konsisten
+ * dengan tampilan yang sudah ditinjau.
+ */
+[data-theme="spiderman"] {
+  color-scheme: dark;
+
+  --bg: #0d070a;
+  --surface: #170a0d;
+  --surface-2: #1c0c10;
+  --surface-3: #0a0507;
+  --field: #120809;
+
+  --text: #ffffff;
+  --text-strong: #f5e6e8;
+  --text-2: #c9a8ac;
+  --text-3: #b49498;
+  --muted: #a2888c;
+
+  --accent: #ef4444;
+  --accent-ink: #1a0505;
+
+  /* Tombol utama: merah, bukan kebalikan latar seperti mode lain */
+  --contrast: #dc2626;
+  --contrast-ink: #ffffff;
+
+  --line-1: rgba(239, 68, 68, 0.12);
+  --line-2: rgba(239, 68, 68, 0.2);
+  --line-3: rgba(239, 68, 68, 0.35);
+
+  --tint-1: rgba(255, 255, 255, 0.025);
+  --tint-2: rgba(255, 255, 255, 0.05);
+  --tint-3: rgba(255, 255, 255, 0.08);
+
+  /* Status ikut merah supaya selaras dengan tema, bukan hijau/kuning biasa */
+  --ok: #ef4444;
+  --warn: #f59e0b;
+
+  --grid-line: rgba(239, 68, 68, 0.05);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --glow-accent: rgba(239, 68, 68, 0.18);
+  --glow-deep: rgba(72, 13, 24, 0.35);
+
+  --ph-from: #1c0c10;
+  --ph-to: #0d070a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: var(--bg);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* Transisi halus saat berganti mode */
+  transition: background-color 0.35s ease;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--line-3);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
